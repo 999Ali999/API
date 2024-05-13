@@ -16,6 +16,10 @@ app.use("/api", protect, router);
 app.post("/user", createNewUser);
 app.post("/login", loginUser);
 
+app.get("/", (req, res, next) => {
+  res.json({ message: "Hello from the /" });
+});
+
 app.use((err, req, res, next) => {
   if (err.type === "auth") {
     res.status(401).json({ message: "Unauthorized" });
